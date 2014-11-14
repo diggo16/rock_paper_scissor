@@ -2,14 +2,11 @@ package model;
 
 import java.util.Random;
 
-public class Bot {
+public class Bot extends Profile{
 	private String choice;
 	
 	public void setChoice() {
 		choice = generateChoice();
-	}
-	public String getChoice() {
-		return choice;
 	}
 	/*
 	 * generate an option

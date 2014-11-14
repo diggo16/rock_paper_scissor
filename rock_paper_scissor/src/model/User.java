@@ -1,8 +1,6 @@
 package model;
 
-public class User {
-	private String choice;
-	
+public class User extends Profile {
 	/*
 	 * set the choice to the string in the parameter
 	 */
@@ -13,12 +11,6 @@ public class User {
 		else {
 			choice = null;
 		}	
-	}
-	/*
-	 * returns the choice
-	 */
-	public String getChoice() {
-		return choice;
 	}
 	/*
 	 * check if the string is a valid option (rock, paper, scissor)
