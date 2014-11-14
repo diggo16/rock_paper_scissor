@@ -36,5 +36,4 @@ public class TestPlayGame {
 		pg.newGame();
 		assertEquals("rock",user.getChoice());
 	}
-
 }
