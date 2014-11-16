@@ -1,9 +1,8 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Rules {
+	
+	
 	public int Winner(String option1, String option2) {
 		if(option1.equals(option2)) {
 			return 0;
@@ -35,6 +34,9 @@ public class Rules {
 			}
 		}
 		return -1;
+	}
+	public void setBestOf(int nr) throws IllegalArgumentException{
+		bestOf = nr;
 	}
 		
 }
