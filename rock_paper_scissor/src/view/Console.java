@@ -21,4 +21,8 @@ public class Console {
 	public void closeScanner() {
 		input.close();
 	}
+
+	public void showWinner(String winner) {
+		System.out.println(winner+" won!");
+	}
 }

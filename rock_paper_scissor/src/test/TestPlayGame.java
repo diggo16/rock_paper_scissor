@@ -44,6 +44,11 @@ public class TestPlayGame {
 	public void testWinner() {
 		User user = new User();
 		PlayGame pg = new PlayGame(user);
-		pg.showWinner();
+		
+		boolean succeed = pg.showWinner();
+		if(succeed == false) {
+			fail();
+		}
+
 	}
 }
