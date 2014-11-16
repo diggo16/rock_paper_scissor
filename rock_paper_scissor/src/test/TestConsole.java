@@ -40,9 +40,11 @@ public class TestConsole {
 			fail();
 		}
 	}
-	//@Test
+	@Test
 	public void testShowWinner() {
 		Console console = new Console();
-		console.showWinner("Winner");
+		
+		console.showWinner(""); // should print out "tie!" in the console
+		console.showWinner("user"); // should print out "user won!" in the console
 	}
 }
