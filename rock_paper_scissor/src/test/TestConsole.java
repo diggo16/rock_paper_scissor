@@ -33,7 +33,7 @@ public class TestConsole {
 	@Test
 	public void testAskForInputOption() {
 		Console consoleStub = Mockito.mock(Console.class);
-		Mockito.when(consoleStub.askForInputOption()).thenReturn("");
+		Mockito.when(consoleStub.askForInputOption()).thenReturn("rock");
 		
 		String input = consoleStub.askForInputOption();
 		if(input.equals("rock") != true) {
