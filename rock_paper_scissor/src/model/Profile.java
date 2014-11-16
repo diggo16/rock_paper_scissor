@@ -1,7 +1,7 @@
 package model;
 
 public class Profile {
-	protected String choice;
+	protected String choice = null;
 	/*
 	 * returns the choice in a string
 	 */

@@ -32,14 +32,19 @@ public class TestPlayGame {
 	@After
 	public void tearDown() throws Exception {
 	}
-
-	//@Test
+	/*
+	 * test the function getUserChoice
+	 */
+	@Test
 	public void testGetUserOption() {
 		User user = new User();
 		PlayGame pg = new PlayGame(user);
 		pg.newGame();
 		assertEquals("rock",user.getChoice());
 	}
+	/*
+	 * test if the winner is correct
+	 */
 	@Test
 	public void testWinner() {
 		User user = new User();
@@ -50,6 +55,5 @@ public class TestPlayGame {
 		if(succeed == false) {
 			fail();
 		}
-
 	}
 }

@@ -3,7 +3,6 @@ package model;
 import java.util.Random;
 
 public class Bot extends Profile{
-	private String choice;
 	
 	public void setChoice() {
 		choice = generateChoice();

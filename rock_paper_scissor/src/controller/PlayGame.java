@@ -15,28 +15,32 @@ public class PlayGame {
 	public PlayGame(User user) {
 		this.user = user;
 		bot = new Bot();
-		console = new Console();
 		rules = new Rules();
 	}
-	
-	
+	/*
+	 * creates a new game
+	 */
 	public void newGame() {
+		console = new Console();
 		getUserOption();
 		bot.setChoice();
 		console.closeScanner();
 	}
+	/*
+	 * ask the console for the user's choice
+	 */
 	private void getUserOption() {
 		String userChoice = console.askForInputOption();
 		user.setChoice(userChoice);	
 	}
 	/*
-	 * 
+	 * let the console print the winner or tell that it is a tie
 	 */
 	public boolean showWinner() {
 		if(user.getChoice() != null && bot.getChoice() != null) {
-			String winner = "";
 			int winnerInt = rules.Winner(user.getChoice(), bot.getChoice());
 			if(winnerInt != -1) {
+				String winner = "";
 				if(winnerInt == 1) {
 					winner = user.getClass().getSimpleName();
 				}
