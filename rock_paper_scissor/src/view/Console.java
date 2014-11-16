@@ -23,6 +23,11 @@ public class Console {
 	}
 
 	public void showWinner(String winner) {
+		if(winner.equals("")) {
+			System.out.println("Tie!");
+		}
+		else {
 		System.out.println(winner+" won!");
+		}
 	}
 }

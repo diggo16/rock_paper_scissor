@@ -22,6 +22,7 @@ public class PlayGame {
 	
 	public void newGame() {
 		getUserOption();
+		bot.setChoice();
 		console.closeScanner();
 	}
 	private void getUserOption() {
@@ -34,14 +35,19 @@ public class PlayGame {
 	public boolean showWinner() {
 		if(user.getChoice() != null && bot.getChoice() != null) {
 			String winner = "";
-			if(rules.Winner(user.getChoice(), bot.getChoice()) != -1) {
+			int winnerInt = rules.Winner(user.getChoice(), bot.getChoice());
+			if(winnerInt != -1) {
+				if(winnerInt == 1) {
+					winner = user.getClass().getSimpleName();
+				}
+				if(winnerInt == 2) {
+					winner = bot.getClass().getSimpleName();
+				}
 				console.showWinner(winner);
 				return true;
 			}
 		}
 		return false;
-		
-		
 	}
 
 }
