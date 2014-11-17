@@ -32,7 +32,13 @@ public class testUser {
 		String choice = "rock";
 		user.setChoice(choice);
 		assertEquals(choice,user.getChoice());
-		
+	}
+	@Test
+	public void testWrongAnswer() {
+		User user = new User();
+		String choice = "rocking";
+		user.setChoice(choice);
+		assertEquals(choice,user.getChoice());
 	}
 
 }
