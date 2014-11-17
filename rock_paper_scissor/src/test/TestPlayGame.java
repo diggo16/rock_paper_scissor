@@ -12,6 +12,8 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.mockito.Mockito;
+import org.mockito.invocation.InvocationOnMock;
 
 import controller.PlayGame;
 
@@ -55,5 +57,12 @@ public class TestPlayGame {
 		if(succeed == false) {
 			fail();
 		}
+	}
+	@Test
+	public void bestOfThreeGame() {
+		User user = new User();
+		PlayGame pg = new PlayGame(user);
+		pg.settings();
+		pg.newGame();
 	}
 }
