@@ -35,34 +35,21 @@ public class TestPlayGame {
 	public void tearDown() throws Exception {
 	}
 	/*
-	 * test the function getUserChoice
+	 * test the function newGame
 	 */
 	@Test
-	public void testGetUserOption() {
+	public void testNewGame() {
 		User user = new User();
 		PlayGame pg = new PlayGame(user);
-		pg.newGame();
-		assertEquals("rock",user.getChoice());
-	}
-	/*
-	 * test if the winner is correct
-	 */
-	@Test
-	public void testWinner() {
-		User user = new User();
-		PlayGame pg = new PlayGame(user);
-		pg.newGame();
 		
-		boolean succeed = pg.showWinner();
+		pg.settings();
+		
+		pg.newGame();
+		assertEquals("rock",user.getChoice()); // test if the users choice is the same that he chose
+		
+		boolean succeed = pg.showWinner(); // test if the winner is correct
 		if(succeed == false) {
 			fail();
 		}
-	}
-	@Test
-	public void bestOfThreeGame() {
-		User user = new User();
-		PlayGame pg = new PlayGame(user);
-		pg.settings();
-		pg.newGame();
 	}
 }

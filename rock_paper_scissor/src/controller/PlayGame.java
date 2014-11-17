@@ -17,21 +17,20 @@ public class PlayGame {
 		bot = new Bot();
 		rules = new Rules();
 	}
+	public void settings() {
+		console = new Console();
+		int bestOf = console.askForRounds();
+		rules.setBestOf(bestOf);
+	}
 	/*
 	 * creates a new game
 	 */
 	public void newGame() {
 		console = new Console();
 		getUserOption();
+		
 		bot.setChoice();
 		console.closeScanner();
-	}
-	/*
-	 * ask the console for the user's choice
-	 */
-	private void getUserOption() {
-		String userChoice = console.askForInputOption();
-		user.setChoice(userChoice);	
 	}
 	/*
 	 * let the console print the winner or tell that it is a tie
@@ -53,5 +52,11 @@ public class PlayGame {
 		}
 		return false;
 	}
-
+	/*
+	 * ask the console for the user's choice
+	 */
+	private void getUserOption() {
+		String userChoice = console.askForInputOption();
+		user.setChoice(userChoice);
+	}
 }
