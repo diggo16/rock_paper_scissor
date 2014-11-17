@@ -2,6 +2,7 @@ package model;
 
 public class Rules {
 	
+	private int bestOf;
 	
 	public int Winner(String option1, String option2) {
 		if(option1.equals(option2)) {
@@ -39,7 +40,7 @@ public class Rules {
 		bestOf = nr;
 	}
 	public int getBestOf() {
-		
+		return bestOf;
 	}
 		
 }
