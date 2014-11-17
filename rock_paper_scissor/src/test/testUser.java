@@ -38,7 +38,7 @@ public class testUser {
 		User user = new User();
 		String choice = "rocking";
 		user.setChoice(choice);
-		assertEquals(choice,user.getChoice());
+		assertEquals(null,user.getChoice());
 	}
 
 }
