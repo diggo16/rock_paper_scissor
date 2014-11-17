@@ -11,6 +11,9 @@ import org.junit.Test;
 
 public class testUser {
 
+	private User user;
+	private String choice;
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -21,6 +24,7 @@ public class testUser {
 
 	@Before
 	public void setUp() throws Exception {
+		user = new User();
 	}
 
 	@After
@@ -28,15 +32,13 @@ public class testUser {
 	}
 	@Test
 	public void testSetAndGetChoice() {
-		User user = new User();
-		String choice = "rock";
+		choice = "rock";
 		user.setChoice(choice);
 		assertEquals(choice,user.getChoice());
 	}
 	@Test
 	public void testWrongAnswer() {
-		User user = new User();
-		String choice = "rocking";
+		choice = "rocking";
 		user.setChoice(choice);
 		assertEquals(null,user.getChoice());
 	}
