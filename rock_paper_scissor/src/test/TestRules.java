@@ -28,9 +28,10 @@ public class TestRules {
 	}
 
 	@Test
-	public void testWinner() {
+	public void testSetAndGetBestOf() {
 		Rules rules = new Rules();
 		rules.setBestOf(3);
+		assertEquals(3,rules.getBestOf());
 	}
 
 }

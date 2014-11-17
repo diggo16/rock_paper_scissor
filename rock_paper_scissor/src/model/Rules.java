@@ -38,5 +38,8 @@ public class Rules {
 	public void setBestOf(int nr) throws IllegalArgumentException{
 		bestOf = nr;
 	}
+	public int getBestOf() {
+		
+	}
 		
 }
