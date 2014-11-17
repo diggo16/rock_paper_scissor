@@ -1,6 +1,8 @@
 package test;
 
 import static org.junit.Assert.fail;
+import model.Bot;
+import model.User;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -39,6 +41,7 @@ public class TestConsole {
 		if(input.equals("rock") != true) {
 			fail();
 		}
+		consoleStub.closeScanner();
 	}
 	@Test
 	public void testShowWinner() {
@@ -46,5 +49,20 @@ public class TestConsole {
 		
 		console.showWinner(""); // should print out "tie!" in the console
 		console.showWinner("user"); // should print out "user won!" in the console
+		console.closeScanner();
+	}
+	@Test
+	public void testPresentProfileOption() {
+		
+		Console console = new Console();
+		User user = new User();
+		user.setChoice("rock");
+		
+		Bot bot = new Bot();
+		bot.setChoice();
+		System.out.print("User got rock=");
+		console.presentProfileOption(user.getClass().getSimpleName(),user.getChoice());
+		System.out.print("Bot got \"option\"=");
+		console.presentProfileOption(bot.getClass().getSimpleName(),bot.getChoice());
 	}
 }
