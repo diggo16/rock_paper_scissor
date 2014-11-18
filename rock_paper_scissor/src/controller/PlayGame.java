@@ -26,14 +26,18 @@ public class PlayGame {
 	 * creates a new game
 	 */
 	public void newGame() {
-		console = new Console();
-		getUserOption();
-		bot.setChoice();
-		
+		for(int i = 0; i < rules.getBestOf(); i++) {
+			console = new Console();
+			getUserOption();
+			bot.setChoice();
+			
 		console.presentProfileOption(user.getClass().getSimpleName(), user.getChoice());
 		console.presentProfileOption(bot.getClass().getSimpleName(), bot.getChoice());
 		
+		showWinner();
+		}
 		console.closeScanner();
+		
 	}
 	/*
 	 * let the console print the winner or tell that it is a tie
