@@ -2,9 +2,6 @@ package test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
-
-import java.lang.reflect.Method;
-
 import model.User;
 
 import org.junit.After;
@@ -12,8 +9,6 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.mockito.Mockito;
-import org.mockito.invocation.InvocationOnMock;
 
 import controller.PlayGame;
 

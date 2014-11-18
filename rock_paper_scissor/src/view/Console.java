@@ -30,4 +30,30 @@ public class Console {
 		System.out.println(winner+" won!");
 		}
 	}
+
+	public int askForRounds() {
+		System.out.println("How many \"best of\" rounds do you want to play? ");
+		int answer = 0;
+		do {
+		if(input.hasNext()) {
+			String temp = input.next();
+			try { 
+			        answer = Integer.parseInt(temp); 
+			    } catch(NumberFormatException e) {
+			    	System.out.println("You must insert a number!");
+			    }
+			}
+			if(answer <= 0) {
+				answer = 0;
+			}
+		if(answer == 0) {
+			System.out.println("You must insert a number higher than 0!");
+		}
+		}while(answer == 0);
+		return answer;
+	}
+
+	public void presentProfileOption(String profileName, String option) {
+		System.out.println(profileName+" got "+option);
+	}
 }

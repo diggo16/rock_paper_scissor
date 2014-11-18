@@ -28,8 +28,11 @@ public class PlayGame {
 	public void newGame() {
 		console = new Console();
 		getUserOption();
-		
 		bot.setChoice();
+		
+		console.presentProfileOption(user.getClass().getSimpleName(), user.getChoice());
+		console.presentProfileOption(bot.getClass().getSimpleName(), bot.getChoice());
+		
 		console.closeScanner();
 	}
 	/*

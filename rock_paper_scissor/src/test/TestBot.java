@@ -1,12 +1,11 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import model.Bot;
-import model.User;
 
 import org.junit.After;
 import org.junit.AfterClass;

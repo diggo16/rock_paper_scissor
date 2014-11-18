@@ -11,8 +11,11 @@ import org.junit.Test;
 
 public class TestRules {
 
+	private Rules rules;
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		
 	}
 
 	@AfterClass
@@ -21,6 +24,7 @@ public class TestRules {
 
 	@Before
 	public void setUp() throws Exception {
+		rules = new Rules();
 	}
 
 	@After
@@ -29,7 +33,7 @@ public class TestRules {
 
 	@Test
 	public void testSetAndGetBestOf() {
-		Rules rules = new Rules();
+		assertEquals(1,rules.getBestOf());
 		rules.setBestOf(3);
 		assertEquals(3,rules.getBestOf());
 	}
