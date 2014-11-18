@@ -4,6 +4,9 @@ public class Rules {
 	
 	private int bestOf;
 	
+	public Rules() {
+		bestOf = 1;
+	}
 	public int Winner(String option1, String option2) {
 		if(option1.equals(option2)) {
 			return 0;
