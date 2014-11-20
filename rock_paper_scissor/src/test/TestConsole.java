@@ -14,6 +14,9 @@ import org.mockito.Mockito;
 import view.Console;
 
 public class TestConsole {
+	
+	private Console consoleMock;
+	private Console console;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -26,6 +29,8 @@ public class TestConsole {
 
 	@Before
 	public void setUp() throws Exception {
+		consoleMock = Mockito.mock(Console.class);
+		console = new Console();
 	}
 
 	@After
@@ -37,22 +42,19 @@ public class TestConsole {
 	 */
 	@Test
 	public void testAskForInputOption() {
-		Console consoleStub = Mockito.mock(Console.class);
-		Mockito.when(consoleStub.askForInputOption()).thenReturn("rock");
+		Mockito.when(consoleMock.askForInputOption()).thenReturn("rock");
 		
-		String input = consoleStub.askForInputOption();
+		String input = consoleMock.askForInputOption();
 		if(input.equals("rock") != true) {
 			fail();
 		}
-		consoleStub.closeScanner();
+		consoleMock.closeScanner();
 	}
 	/*
 	 * test to show the winner
 	 */
 	@Test
 	public void testShowWinner() {
-		Console console = new Console();
-		
 		console.showWinner(""); // should print out "tie!" in the console
 		console.showWinner("user"); // should print out "user won!" in the console
 		console.closeScanner();
@@ -63,7 +65,6 @@ public class TestConsole {
 	@Test
 	public void testPresentProfileOption() {
 		
-		Console console = new Console();
 		User user = new User();
 		user.setChoice("rock");
 		
@@ -73,23 +74,34 @@ public class TestConsole {
 		console.presentProfileOption(user.getClass().getSimpleName(),user.getChoice());
 		System.out.print("Bot got \"option\"=");
 		console.presentProfileOption(bot.getClass().getSimpleName(),bot.getChoice());
+		console.closeScanner();
 	}
 	/*
 	 * test the meny
 	 */
 	@Test
 	public void testMeny() {
-		Console console = new Console();
-		int choice = console.meny();
-		int[] validNumbers = {1,2,3};
-		boolean ifValid = false;
-		for(int i = 0; i < validNumbers.length; i++) {
-			if(choice == validNumbers[i]) {
-				ifValid = true;
+		/*
+		 * loop for every option
+		 */
+		for(int k = 1; k < 4; k++) {
+			Mockito.when(consoleMock.meny()).thenReturn(k);		// return k when method meny() from the console i called
+			int choice = consoleMock.meny();
+			int[] validNumbers = {1,2,3};		// every valid numbers in an array
+			boolean ifValid = false;
+			for(int i = 0; i < validNumbers.length; i++) {		// check if the return value was valid else fail the test
+				if(choice == validNumbers[i]) {
+					ifValid = true;
+				}
+			}
+			if(ifValid == false) {
+				fail();
 			}
 		}
-		if(ifValid == false) {
-			fail();
-		}
+	}
+	@Test
+	public void test() {
+		console.meny();
+		
 	}
 }

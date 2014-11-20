@@ -94,4 +94,12 @@ public class Console {
 		}while(answer == 0);
 		return answer;
 	}
+	public void test() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("test:");
+		String s = scanner.next();
+		System.out.println(s);
+		
+		scanner.close();
+	}
 }

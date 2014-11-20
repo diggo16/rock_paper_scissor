@@ -19,9 +19,14 @@ public class PlayGame {
 		rules = new Rules();
 	}
 	public void meny() {
-		int menyChoice = -1;
+		int menyChoice;
 		do {
 			menyChoice = console.meny();
+			
+			if(menyChoice == 0) {
+				break;
+			}
+		
 			if(menyChoice == 1) {
 				newGame();
 			}
@@ -29,6 +34,7 @@ public class PlayGame {
 				settings();
 			}
 		}while(menyChoice != 3);
+		console.closeScanner();
 		
 	}
 	public void settings() {
@@ -48,7 +54,6 @@ public class PlayGame {
 		
 			showWinner();
 		}
-		console.closeScanner();
 	}
 	/*
 	 * let the console print the winner or tell that it is a tie
