@@ -1,8 +1,6 @@
 package test;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
-import model.Bot;
 import model.User;
 
 import org.junit.After;
@@ -17,6 +15,10 @@ import controller.PlayGame;
 
 public class TestPlayGame {
 
+	private User user;
+	private Console console;
+	private PlayGame pg;
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -27,6 +29,10 @@ public class TestPlayGame {
 
 	@Before
 	public void setUp() throws Exception {
+		user = new User();
+		console = Mockito.mock(Console.class);
+		Mockito.when(console.askForInputOption()).thenReturn("rock");
+		pg = new PlayGame(user,console);
 	}
 
 	@After
@@ -36,29 +42,16 @@ public class TestPlayGame {
 	 * test the function newGame
 	 */
 	@Test
-	public void testNewGame() {
-		User user = new User();
-		Console console = new Console();
-		PlayGame pg = new PlayGame(user,console);
-		
-		pg.settings();
-		
+	public void testNewGameAndWinner() {
 		pg.newGame();
-		assertEquals("rock",user.getChoice()); // test if the users choice is the same that he chose
-		
-		boolean succeed = pg.showWinner(); // test if the winner is correct
+		boolean succeed = pg.showWinner();
 		if(succeed == false) {
 			fail();
-		}
+		}		
 	}
 	@Test
 	public void testConsoleCall() {
-		User user = new User();
-		Console console = Mockito.mock(Console.class);
-		Mockito.when(console.askForInputOption()).thenReturn("rock");
-		PlayGame pg = new PlayGame(user,console);
 		pg.newGame();
-		
 		Mockito.verify(console).presentProfileOption("User","rock");
 		
 	}

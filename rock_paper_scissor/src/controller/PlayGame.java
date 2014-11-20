@@ -13,6 +13,7 @@ public class PlayGame {
 	private Rules rules;
 	
 	public PlayGame(User user, Console console) {
+		//console.clearConsole();
 		this.user = user;
 		this.console = console;
 		bot = new Bot();
