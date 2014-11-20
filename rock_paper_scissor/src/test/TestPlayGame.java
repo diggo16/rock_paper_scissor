@@ -56,6 +56,7 @@ public class TestPlayGame {
 		Console console = Mockito.mock(Console.class);
 		Mockito.when(console.askForInputOption()).thenReturn("rock");
 		PlayGame pg = new PlayGame(user,console);
+		pg.newGame();
 		
 		Mockito.verify(console).presentProfileOption("User","rock");
 		
