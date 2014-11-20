@@ -58,6 +58,6 @@ public class TestPlayGame {
 	@Test
 	public void TestMeny() {
 		pg.meny();
-		Mockito.verify(console).meny;
+		Mockito.verify(console).meny();
 	}
 }

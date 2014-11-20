@@ -18,6 +18,19 @@ public class PlayGame {
 		bot = new Bot();
 		rules = new Rules();
 	}
+	public void meny() {
+		int menyChoice = -1;
+		do {
+			menyChoice = console.meny();
+			if(menyChoice == 1) {
+				newGame();
+			}
+			if(menyChoice == 2) {
+				settings();
+			}
+		}while(menyChoice != 3);
+		
+	}
 	public void settings() {
 		int bestOf = console.askForRounds();
 		rules.setBestOf(bestOf);
