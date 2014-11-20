@@ -55,4 +55,9 @@ public class TestPlayGame {
 		Mockito.verify(console).presentProfileOption("User","rock");
 		
 	}
+	@Test
+	public void TestMeny() {
+		pg.meny();
+		Mockito.verify(console).meny;
+	}
 }

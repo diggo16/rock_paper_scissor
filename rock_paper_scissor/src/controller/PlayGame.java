@@ -13,7 +13,6 @@ public class PlayGame {
 	private Rules rules;
 	
 	public PlayGame(User user, Console console) {
-		//console.clearConsole();
 		this.user = user;
 		this.console = console;
 		bot = new Bot();
@@ -31,10 +30,10 @@ public class PlayGame {
 			getUserOption();
 			bot.setChoice();
 			
-		console.presentProfileOption(user.getClass().getSimpleName(), user.getChoice());
-		console.presentProfileOption(bot.getClass().getSimpleName(), bot.getChoice());
+			console.presentProfileOption(user.getClass().getSimpleName(), user.getChoice());
+			console.presentProfileOption(bot.getClass().getSimpleName(), bot.getChoice());
 		
-		showWinner();
+			showWinner();
 		}
 		console.closeScanner();
 	}
