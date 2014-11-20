@@ -8,7 +8,9 @@ public class Console {
 	public Console() {
 		input = new Scanner(System.in);
 	}
-	
+	/*
+	 * Ask for input option (rock,paper,scissor)
+	 */
 	public String askForInputOption() {
 		System.out.println("What do you want to choose? (rock, paper or scissor)");
 		
@@ -18,10 +20,15 @@ public class Console {
 		}
 		return answer;
 	}
+	/*
+	 * close the scanner
+	 */
 	public void closeScanner() {
 		input.close();
 	}
-
+	/*
+	 * show the winner
+	 */
 	public void showWinner(String winner) {
 		if(winner.equals("")) {
 			System.out.println("Tie!");
@@ -30,7 +37,9 @@ public class Console {
 		System.out.println(winner+" won!");
 		}
 	}
-
+	/*
+	 * ask for amounts of rounds
+	 */
 	public int askForRounds() {
 		System.out.println("How many \"best of\" rounds do you want to play? ");
 		int answer = 0;
@@ -52,11 +61,15 @@ public class Console {
 		}while(answer == 0);
 		return answer;
 	}
-
+	/*
+	 * present the option that the Profile profileName has chose
+	 */
 	public void presentProfileOption(String profileName, String option) {
 		System.out.println(profileName+" got "+option);
 	}
-
+	/*
+	 * present the meny and ask for number of the choice
+	 */
 	public int meny() {
 		System.out.println("Meny:\n"
 						 + "1. New game\n"
@@ -72,11 +85,11 @@ public class Console {
 			    	System.out.println("You must insert a number!");
 			    }
 			}
-			if(answer <= 1 && answer >=2) {
+			if(answer < 1 || answer >3) {
 				answer = 0;
 			}
 		if(answer == 0) {
-			System.out.println("You must insert a number higher than 0!");
+			System.out.println("You must insert one of the numbers of the options! (1-3)");
 		}
 		}while(answer == 0);
 		return answer;
