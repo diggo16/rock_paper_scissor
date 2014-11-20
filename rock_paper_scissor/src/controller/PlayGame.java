@@ -12,13 +12,13 @@ public class PlayGame {
 	private Console console;
 	private Rules rules;
 	
-	public PlayGame(User user) {
+	public PlayGame(User user, Console console) {
 		this.user = user;
+		this.console = console;
 		bot = new Bot();
 		rules = new Rules();
 	}
 	public void settings() {
-		console = new Console();
 		int bestOf = console.askForRounds();
 		rules.setBestOf(bestOf);
 	}
@@ -27,7 +27,6 @@ public class PlayGame {
 	 */
 	public void newGame() {
 		for(int i = 0; i < rules.getBestOf(); i++) {
-			console = new Console();
 			getUserOption();
 			bot.setChoice();
 			

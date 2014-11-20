@@ -38,7 +38,8 @@ public class TestPlayGame {
 	@Test
 	public void testNewGame() {
 		User user = new User();
-		PlayGame pg = new PlayGame(user);
+		Console console = new Console();
+		PlayGame pg = new PlayGame(user,console);
 		
 		pg.settings();
 		
