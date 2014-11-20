@@ -42,7 +42,7 @@ public class TestPlayGame {
 	/*
 	 * test the function newGame
 	 */
-	//@Test
+	@Test
 	public void testNewGameAndWinner() {
 		pg.newGame();
 		boolean succeed = pg.showWinner();
@@ -50,7 +50,7 @@ public class TestPlayGame {
 			fail();
 		}		
 	}
-	//@Test
+	@Test
 	public void testConsoleCall() {
 		pg.newGame();
 		Mockito.verify(console).presentProfileOption("User","rock");

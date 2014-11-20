@@ -81,27 +81,16 @@ public class TestConsole {
 	 */
 	@Test
 	public void testMeny() {
-		/*
-		 * loop for every option
-		 */
-		for(int k = 1; k < 4; k++) {
-			Mockito.when(consoleMock.meny()).thenReturn(k);		// return k when method meny() from the console i called
-			int choice = consoleMock.meny();
-			int[] validNumbers = {1,2,3};		// every valid numbers in an array
-			boolean ifValid = false;
-			for(int i = 0; i < validNumbers.length; i++) {		// check if the return value was valid else fail the test
-				if(choice == validNumbers[i]) {
-					ifValid = true;
-				}
-			}
-			if(ifValid == false) {
-				fail();
+		int choice = console.meny();
+		int[] validNumbers = {1,2,3};		// every valid numbers in an array
+		boolean ifValid = false;
+		for(int i = 0; i < validNumbers.length; i++) {		// check if the return value was valid else fail the test
+			if(choice == validNumbers[i]) {
+				ifValid = true;
 			}
 		}
-	}
-	@Test
-	public void test() {
-		console.meny();
-		
+		if(ifValid == false) {
+			fail();
+		}
 	}
 }
