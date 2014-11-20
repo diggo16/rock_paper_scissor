@@ -37,7 +37,6 @@ public class PlayGame {
 		showWinner();
 		}
 		console.closeScanner();
-		
 	}
 	/*
 	 * let the console print the winner or tell that it is a tie

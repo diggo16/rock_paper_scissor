@@ -2,6 +2,7 @@ package test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
+import model.Bot;
 import model.User;
 
 import org.junit.After;
@@ -9,7 +10,9 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.mockito.Mockito;
 
+import view.Console;
 import controller.PlayGame;
 
 public class TestPlayGame {
@@ -46,5 +49,15 @@ public class TestPlayGame {
 		if(succeed == false) {
 			fail();
 		}
+	}
+	@Test
+	public void testConsoleCall() {
+		User user = new User();
+		Console console = Mockito.mock(Console.class);
+		Mockito.when(console.askForInputOption()).thenReturn("rock");
+		PlayGame pg = new PlayGame(user,console);
+		
+		Mockito.verify(console).presentProfileOption("User","rock");
+		
 	}
 }
