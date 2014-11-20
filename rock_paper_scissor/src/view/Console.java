@@ -59,9 +59,9 @@ public class Console {
 
 	public int meny() {
 		System.out.println("Meny:\n"
-						 + "1. New game"
-						 + "2. Settings"
-						 + "3. Quit");
+						 + "1. New game\n"
+						 + "2. Settings\n"
+						 + "3. Quit\n");
 		int answer = 0;
 		do {
 		if(input.hasNext()) {

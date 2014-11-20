@@ -32,6 +32,9 @@ public class TestConsole {
 	public void tearDown() throws Exception {
 	}
 
+	/*
+	 * test to ask for input option
+	 */
 	@Test
 	public void testAskForInputOption() {
 		Console consoleStub = Mockito.mock(Console.class);
@@ -43,6 +46,9 @@ public class TestConsole {
 		}
 		consoleStub.closeScanner();
 	}
+	/*
+	 * test to show the winner
+	 */
 	@Test
 	public void testShowWinner() {
 		Console console = new Console();
@@ -51,6 +57,9 @@ public class TestConsole {
 		console.showWinner("user"); // should print out "user won!" in the console
 		console.closeScanner();
 	}
+	/*
+	 * test to present the the option
+	 */
 	@Test
 	public void testPresentProfileOption() {
 		
@@ -64,5 +73,23 @@ public class TestConsole {
 		console.presentProfileOption(user.getClass().getSimpleName(),user.getChoice());
 		System.out.print("Bot got \"option\"=");
 		console.presentProfileOption(bot.getClass().getSimpleName(),bot.getChoice());
+	}
+	/*
+	 * test the meny
+	 */
+	@Test
+	public void testMeny() {
+		Console console = new Console();
+		int choice = console.meny();
+		int[] validNumbers = {1,2,3};
+		boolean ifValid = false;
+		for(int i = 0; i < validNumbers.length; i++) {
+			if(choice == validNumbers[i]) {
+				ifValid = true;
+			}
+		}
+		if(ifValid == false) {
+			fail();
+		}
 	}
 }
