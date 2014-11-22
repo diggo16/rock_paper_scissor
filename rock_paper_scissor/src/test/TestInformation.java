@@ -1,6 +1,9 @@
 package test;
 
 import static org.junit.Assert.*;
+
+import java.io.FileNotFoundException;
+
 import model.Information;
 import model.User;
 
@@ -24,7 +27,6 @@ public class TestInformation {
 	@Before
 	public void setUp() throws Exception {
 	}
-
 	@After
 	public void tearDown() throws Exception {
 	}
@@ -32,10 +34,17 @@ public class TestInformation {
 	@Test
 	public void testSave() {
 		Information info = new Information("info.txt");
-		info.save();
-		User user = info.getUser("Daniel");
-		assertEquals("rock",user.getChoice());
 		
+		if(info.save() == false) {
+			fail();
+		}
+		try {
+			info.load();
+		} catch (FileNotFoundException e) {
+			fail();
+		}
+		User user = info.getUser("user");
+		assertEquals("rock",user.getChoice());
 		
 	}
 
