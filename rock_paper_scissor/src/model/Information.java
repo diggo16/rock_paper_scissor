@@ -2,7 +2,9 @@ package model;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,6 +18,13 @@ public class Information {
 	}
 
 	public User getUser(String string) {
+		Iterator<User> iter = users.iterator();
+		while(iter.hasNext()) {
+			User user = iter.next();
+			if(user.name.equals(string)) {
+				return user;
+			}
+		}
 		return null;
 	}
 
@@ -23,7 +32,7 @@ public class Information {
 		try {
 		Scanner scanFile = new Scanner(file);
 		
-		while(scanFile.hasNextLine()) {
+		while(scanFile.hasNext()) {
 			User temp = new User(scanFile.next());
 			temp.setChoice(scanFile.next());
 			users.add(temp);
@@ -34,7 +43,20 @@ public class Information {
 		}
 	}
 
-	public boolean save() {
+	public boolean save(List<User> list) {
+		users = list;
+		try {
+			PrintWriter pw = new PrintWriter(file);
+			Iterator<User> iter = users.iterator();
+			while(iter.hasNext()) {
+				User user = iter.next();
+				pw.println(user.name+" "+user.choice);
+			}
+			pw.close();
+			return true;
+		} catch (FileNotFoundException e) {
+			System.out.println("Error: File is not initialized!");
+		}
 		return false;
 	}
 

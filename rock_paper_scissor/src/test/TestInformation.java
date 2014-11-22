@@ -1,8 +1,11 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.Information;
 import model.User;
@@ -12,7 +15,6 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 public class TestInformation {
 
@@ -31,21 +33,37 @@ public class TestInformation {
 	public void tearDown() throws Exception {
 	}
 
+	/* 
+	 * Test to save the information
+	 */
 	@Test
 	public void testSave() {
 		Information info = new Information("info.txt");
-		
-		if(info.save() == false) {
+		List<User> users = new ArrayList<User>();
+		User user1 = new User("Name1");
+		user1.setChoice("rock");
+		User user2 = new User("Name2");
+		user2.setChoice("paper");
+		users.add(user1);
+		users.add(user2);
+		if(info.save(users) == false) {
 			fail();
 		}
+	}
+	/*
+	 * test to load the information
+	 */
+	@Test
+	public void TestLoad() {
+		Information info = new Information("info.txt");
 		try {
 			info.load();
 		} catch (FileNotFoundException e) {
+			System.out.println("fail");
 			fail();
 		}
-		User user = info.getUser("user");
+		User user = info.getUser("Name1");
 		assertEquals("rock",user.getChoice());
-		
 	}
 
 }
