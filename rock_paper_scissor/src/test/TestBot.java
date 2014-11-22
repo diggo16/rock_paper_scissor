@@ -30,18 +30,20 @@ public class TestBot {
 	@After
 	public void tearDown() throws Exception {
 	}
-
+	/*
+	 * test set and get choice methods
+	 */
 	@Test
 	public void testSetAndGetChoice() {
 		Bot bot = new Bot();
-		bot.setChoice();
-		
-		String botChoice = bot.getChoice();
-		List<String> options = new ArrayList<String>();
-		options.add("rock");
-		options.add("paper");
-		options.add("scissor");
-		if(options.contains(botChoice)) {
+		//test 10 times
+		for(int i = 0; i < 10; i++) {
+			bot.setChoice();
+			String botChoice = bot.getChoice();
+			List<String> options = new ArrayList<String>();
+			options.add("rock");
+			options.add("paper");
+			options.add("scissor");
 			assertEquals(options.get(options.indexOf(botChoice)),botChoice);
 		}
 	}

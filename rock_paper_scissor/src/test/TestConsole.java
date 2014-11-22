@@ -1,6 +1,6 @@
 package test;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 import model.Bot;
 import model.User;
 
@@ -42,12 +42,11 @@ public class TestConsole {
 	 */
 	@Test
 	public void testAskForInputOption() {
-		Mockito.when(consoleMock.askForInputOption()).thenReturn("rock");
+		String option = "rock";
+		Mockito.when(consoleMock.askForInputOption()).thenReturn(option);
 		
 		String input = consoleMock.askForInputOption();
-		if(input.equals("rock") != true) {
-			fail();
-		}
+		assertEquals(option, input);
 		consoleMock.closeScanner();
 	}
 	/*
@@ -65,7 +64,7 @@ public class TestConsole {
 	@Test
 	public void testPresentProfileOption() {
 		
-		User user = new User();
+		User user = new User("user");
 		user.setChoice("rock");
 		
 		Bot bot = new Bot();
@@ -81,16 +80,21 @@ public class TestConsole {
 	 */
 	@Test
 	public void testMeny() {
-		int choice = console.meny();
-		int[] validNumbers = {1,2,3};		// every valid numbers in an array
-		boolean ifValid = false;
-		for(int i = 0; i < validNumbers.length; i++) {		// check if the return value was valid else fail the test
-			if(choice == validNumbers[i]) {
-				ifValid = true;
+		for(int k = 0; k<=3; k++) {
+			Mockito.when(consoleMock.meny()).thenReturn(k);
+			int choice = consoleMock.meny();
+			int[] validNumbers = {1,2,3};		// every valid numbers in an array
+			boolean ifValid = false;
+			for(int i = 0; i < validNumbers.length; i++) {		// check if the return value was valid else fail the test
+				if(choice == validNumbers[i]) {
+					ifValid = true;
+				}
+			}			
+			if(ifValid == false) {
+				if(k != 0) {
+				fail();
+				}
 			}
-		}
-		if(ifValid == false) {
-			fail();
 		}
 	}
 }

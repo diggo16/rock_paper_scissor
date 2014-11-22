@@ -1,6 +1,9 @@
 package model;
 
 public class User extends Profile {
+	public User(String name) {
+		this.name = name;
+	}
 	/*
 	 * set the choice to the string in the parameter
 	 */

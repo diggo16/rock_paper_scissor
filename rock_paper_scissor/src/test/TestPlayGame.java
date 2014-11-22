@@ -30,7 +30,7 @@ public class TestPlayGame {
 	@Before
 	public void setUp() throws Exception {
 
-		user = new User();
+		user = new User("user");
 		console = Mockito.mock(Console.class);
 		Mockito.when(console.askForInputOption()).thenReturn("rock");
 		pg = new PlayGame(user,console);

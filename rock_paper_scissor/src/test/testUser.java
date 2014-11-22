@@ -24,7 +24,7 @@ public class testUser {
 
 	@Before
 	public void setUp() throws Exception {
-		user = new User();
+		user = new User("user");
 	}
 
 	@After

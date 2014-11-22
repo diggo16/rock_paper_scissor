@@ -74,7 +74,7 @@ public class Console {
 		System.out.println("Meny:\n"
 						 + "1. New game\n"
 						 + "2. Settings\n"
-						 + "3. Quit\n");
+						 + "3. Quit");
 		int answer = 0;
 		do {
 		if(input.hasNext()) {
@@ -93,13 +93,5 @@ public class Console {
 		}
 		}while(answer == 0);
 		return answer;
-	}
-	public void test() {
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("test:");
-		String s = scanner.next();
-		System.out.println(s);
-		
-		scanner.close();
 	}
 }
