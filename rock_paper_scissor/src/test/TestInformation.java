@@ -17,6 +17,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class TestInformation {
+	
+	private Information info;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -28,6 +30,7 @@ public class TestInformation {
 
 	@Before
 	public void setUp() throws Exception {
+		info = new Information("info.txt");
 	}
 	@After
 	public void tearDown() throws Exception {
@@ -38,7 +41,6 @@ public class TestInformation {
 	 */
 	@Test
 	public void testSave() {
-		Information info = new Information("info.txt");
 		List<User> users = new ArrayList<User>();
 		User user1 = new User("Name1");
 		user1.setChoice("rock");
@@ -55,7 +57,6 @@ public class TestInformation {
 	 */
 	@Test
 	public void TestLoad() {
-		Information info = new Information("info.txt");
 		try {
 			info.load();
 		} catch (FileNotFoundException e) {
