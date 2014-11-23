@@ -1,6 +1,9 @@
 package test;
 
 import static org.junit.Assert.*;
+
+import java.util.Random;
+
 import model.User;
 
 import org.junit.After;
@@ -13,6 +16,7 @@ public class testUser {
 
 	private User user;
 	private String choice;
+	private Random random;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -25,6 +29,7 @@ public class testUser {
 	@Before
 	public void setUp() throws Exception {
 		user = new User("user");
+		random = new Random();
 	}
 
 	@After
@@ -43,11 +48,12 @@ public class testUser {
 		assertEquals(null,user.getChoice());
 	}
 	@Test
-	public void testStatistics() {
-		for(int i = 0 ; i < 5 ; i++) {
+	public void testScore() {
+		int wins = random.nextInt(100);
+		for(int i = 0 ; i < wins ; i++) {
 		user.win();
 		}
-		assertEquals(5,user.getScore());
+		assertEquals(wins,user.getScore());
 	}
 
 }
