@@ -1,6 +1,10 @@
 package test;
 
 import static org.junit.Assert.fail;
+
+import java.util.Random;
+
+import model.Bot;
 import model.User;
 
 import org.junit.After;
@@ -16,6 +20,7 @@ import controller.PlayGame;
 public class TestPlayGame {
 
 	private User user;
+	private Bot bot;
 	private Console console;
 	private PlayGame pg;
 	
@@ -31,9 +36,10 @@ public class TestPlayGame {
 	public void setUp() throws Exception {
 
 		user = new User("user");
+		bot  = new Bot();
 		console = Mockito.mock(Console.class);
 		Mockito.when(console.askForInputOption()).thenReturn("rock");
-		pg = new PlayGame(user,console);
+		pg = new PlayGame(user,bot,console);
 	}
 
 	@After
@@ -57,9 +63,21 @@ public class TestPlayGame {
 		
 	}
 	@Test
-	public void TestMeny() {
+	public void testMeny() {
 		console = new Console();
-		pg = new PlayGame(user,console);
+		pg = new PlayGame(user,bot,console);
 		pg.meny();	
+	}
+	@Test
+	public void testBestOf() {
+		Mockito.when(console.askForRounds()).thenReturn(3);
+		pg.settings();
+		pg.newGame();
+		
+		if(user.getScore() != 2 || bot.getScore() != 2) {
+			fail();
+		}
+		
+		
 	}
 }

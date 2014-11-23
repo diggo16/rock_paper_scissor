@@ -25,4 +25,7 @@ public class Bot extends Profile{
 		}
 		return option;
 	}
+	public int getScore() {
+		return 0;
+	}
 }

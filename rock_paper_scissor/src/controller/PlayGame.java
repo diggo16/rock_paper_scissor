@@ -12,10 +12,10 @@ public class PlayGame {
 	private Console console;
 	private Rules rules;
 	
-	public PlayGame(User user, Console console) {
+	public PlayGame(User user, Bot bot, Console console) {
 		this.user = user;
 		this.console = console;
-		bot = new Bot();
+		this.bot = new Bot();
 		rules = new Rules();
 	}
 	public void meny() {
