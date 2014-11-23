@@ -28,10 +28,10 @@ public class User extends Profile {
 		return false;
 	}
 	public void win() {
-		
+		score++;
 	}
 	public int getScore() {
-		return 0;
+		return score;
 	}
 
 }
