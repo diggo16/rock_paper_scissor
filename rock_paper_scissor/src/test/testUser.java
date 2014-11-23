@@ -42,5 +42,12 @@ public class testUser {
 		user.setChoice(choice);
 		assertEquals(null,user.getChoice());
 	}
+	@Test
+	public void testStatistics() {
+		for(int i = 0 ; i < 5 ; i++) {
+		user.win();
+		}
+		assertEquals(5,user.getScore());
+	}
 
 }

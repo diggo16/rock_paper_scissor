@@ -27,5 +27,11 @@ public class User extends Profile {
 		}
 		return false;
 	}
+	public void win() {
+		
+	}
+	public int getScore() {
+		return 0;
+	}
 
 }
