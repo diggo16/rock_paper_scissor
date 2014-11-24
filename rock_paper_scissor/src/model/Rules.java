@@ -7,6 +7,9 @@ public class Rules {
 	public Rules() {
 		bestOf = 1;
 	}
+	/*
+	 * return 0 if it is a tie, 1 if "option1" won or 2 if "option2" won.
+	 */
 	public int Winner(String option1, String option2) {
 		if(option1.equals(option2)) {
 			return 0;

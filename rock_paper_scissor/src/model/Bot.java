@@ -4,6 +4,10 @@ import java.util.Random;
 
 public class Bot extends Profile{
 	
+	public Bot() {
+		name = "bot";
+	}
+	
 	public void setChoice() {
 		choice = generateChoice();
 	}
@@ -25,7 +29,10 @@ public class Bot extends Profile{
 		}
 		return option;
 	}
+	public void win() {
+		score++;
+	}
 	public int getScore() {
-		return 0;
+		return score;
 	}
 }

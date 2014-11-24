@@ -10,4 +10,10 @@ public class Profile {
 	public String getChoice() {
 		return choice;
 	}
+	public void reset() {
+		score = 0;
+	}
+	public String getName() {
+		return name;
+	}
 }

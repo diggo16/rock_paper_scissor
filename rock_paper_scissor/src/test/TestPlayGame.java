@@ -73,10 +73,11 @@ public class TestPlayGame {
 		Mockito.when(console.askForRounds()).thenReturn(3);
 		pg.settings();
 		pg.newGame();
-		if(user.getScore() != 2 || bot.getScore() != 2) {
-			fail();
-		}
 		
+		if(user.getScore() != 2 && bot.getScore() != 2) {
+			System.out.println(user.getScore()+" "+bot.getScore());
+			fail("");
+		}
 	}
 	@Test
 	public void testWinner() {
@@ -87,7 +88,7 @@ public class TestPlayGame {
 		}
 		bot.win();
 		pg.winner();
-		Mockito.verify(console).showWinner("User");
+		Mockito.verify(console).showWinner("user");
 		
 	}
 }

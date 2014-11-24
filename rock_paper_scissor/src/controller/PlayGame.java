@@ -45,17 +45,53 @@ public class PlayGame {
 	 * creates a new game
 	 */
 	public void newGame() {
-		for(int i = 0; i < rules.getBestOf(); i++) {
+		int bestOf = rules.getBestOf();
+		int maxPoints = (bestOf/2)+1;
+		for(int i = 0; i < bestOf; i++) {
 			getUserOption();
 			bot.setChoice();
-			
+			if(countWinner() != true) {
+				i--;
+			}
 			console.presentProfileOption(user.getClass().getSimpleName(), user.getChoice());
 			console.presentProfileOption(bot.getClass().getSimpleName(), bot.getChoice());
-		
-			showWinner();
+			
+			if(user.getScore() == maxPoints || bot.getScore() == maxPoints) {
+				break;
+			}
+		}
+		winner();
+	}
+	private boolean countWinner() {
+		int winnerInt = rules.Winner(user.getChoice(), bot.getChoice());
+		if(winnerInt == 1) {
+			user.win();
+		}
+		if (winnerInt == 2) {
+			bot.win();
+		}
+		if(winnerInt == 0) {
+			return false;
+		}
+		else {
+			return true;
 		}
 	}
-	public boolean winner() //winner of bestof
+	public void winner() {
+		String winner = winnerName();
+		console.showWinner(winner);
+	}
+	private String winnerName() {
+		int userScore = user.getScore();
+		int botScore = bot.getScore();
+		if(userScore == botScore) {
+			return null;
+		}
+		if(userScore > botScore) {
+			return user.getName();
+		}
+		return bot.getName();
+	}
 	/*
 	 * let the console print the winner or tell that it is a tie
 	 */
