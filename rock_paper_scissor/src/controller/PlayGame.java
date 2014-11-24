@@ -15,7 +15,7 @@ public class PlayGame {
 	public PlayGame(User user, Bot bot, Console console) {
 		this.user = user;
 		this.console = console;
-		this.bot = new Bot();
+		this.bot = bot;
 		rules = new Rules();
 	}
 	public void meny() {
@@ -55,6 +55,7 @@ public class PlayGame {
 			showWinner();
 		}
 	}
+	public boolean winner() //winner of bestof
 	/*
 	 * let the console print the winner or tell that it is a tie
 	 */
