@@ -1,9 +1,6 @@
 package test;
 
 import static org.junit.Assert.fail;
-
-import java.util.Random;
-
 import model.Bot;
 import model.User;
 
@@ -62,21 +59,34 @@ public class TestPlayGame {
 		Mockito.verify(console).presentProfileOption("User","rock");
 		
 	}
+	/*
+	 * test the meny
+	 */
 	@Test
 	public void testMeny() {
 		console = new Console();
 		pg = new PlayGame(user,bot,console);
 		pg.meny();	
 	}
+	/*
+	 * test several games with different best of numbers
+	 */
 	@Test
 	public void testBestOf() {
-		Mockito.when(console.askForRounds()).thenReturn(3);
-		pg.settings();
-		pg.newGame();
-		
-		if(user.getScore() != 2 && bot.getScore() != 2) {
-			System.out.println(user.getScore()+" "+bot.getScore());
-			fail("");
+		/*
+		 * test best of 1, 3, 5, 7 and 9
+		 */
+		for(int i = 1 ; i <10; i = i + 2) {
+			int round = i;
+			int maxScore = round / 2 +1;
+			Mockito.when(console.askForRounds()).thenReturn(round);
+			pg.settings();
+			pg.newGame();
+			
+			if(user.getScore() != maxScore && bot.getScore() != maxScore) {
+				System.out.println(user.getScore()+" "+bot.getScore());
+				fail("");
+			}
 		}
 	}
 	@Test
