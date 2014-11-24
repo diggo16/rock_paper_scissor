@@ -87,6 +87,7 @@ public class TestPlayGame {
 		}
 		bot.win();
 		pg.winner();
+		Mockito.verify(console).showWinner("User");
 		
 	}
 }
