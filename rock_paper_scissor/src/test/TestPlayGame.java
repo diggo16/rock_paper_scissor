@@ -57,9 +57,10 @@ public class TestPlayGame {
 	 */
 	@Test
 	public void testMeny() {
-		console = new Console();
-		pg = new PlayGame(user,bot,console);
+		Console con = new Console();
+		pg = new PlayGame(user,bot,con);
 		pg.meny();
+		con.closeScanner();
 	}
 	/*
 	 * test several games with different best of numbers

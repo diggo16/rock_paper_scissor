@@ -3,6 +3,7 @@ package controller;
 import view.Console;
 import model.Bot;
 import model.Rules;
+import model.Statistics;
 import model.User;
 
 public class PlayGame {
@@ -33,7 +34,11 @@ public class PlayGame {
 			if(menyChoice == 2) {
 				settings();
 			}
-		}while(menyChoice != 3);
+			if(menyChoice == 3) {
+				Statistics stats = user.getStatistics();
+				console.presentStatistics(stats.getWins(), stats.getLosses());
+			}
+		}while(menyChoice != 4);
 		console.closeScanner();
 		
 	}
@@ -62,8 +67,8 @@ public class PlayGame {
 			if(user.getScore() == maxPoints || bot.getScore() == maxPoints) {
 				break;
 			}
-			winner();
-		}
+			
+		}winner();
 			
 	}
 	private boolean countWinner() {
@@ -83,7 +88,16 @@ public class PlayGame {
 	}
 	public void winner() {
 		String winner = winnerName();
-		console.showWinner(winner);
+		if(winner != null)
+			{
+			if(winner.equals(user.getName())) {
+				user.gameResult("won");
+			}
+			else {
+				user.gameResult("lost");
+			}
+			console.showWinner(winner);
+		}
 	}
 	private String winnerName() {
 		int userScore = user.getScore();

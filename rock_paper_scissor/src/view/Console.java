@@ -30,11 +30,11 @@ public class Console {
 	 * show the winner
 	 */
 	public void showWinner(String winner) {
-		if(winner.equals("")) {
-			System.out.println("Tie!");
+		if(winner != null) {
+		System.out.println(winner+" won!");
 		}
 		else {
-		System.out.println(winner+" won!");
+			System.out.println("Tie!");
 		}
 	}
 	/*
@@ -74,7 +74,8 @@ public class Console {
 		System.out.println("Meny:\n"
 						 + "1. New game\n"
 						 + "2. Settings\n"
-						 + "3. Quit");
+						 + "3. Statistics\n"
+						 + "4. Quit");
 		int answer = 0;
 		do {
 		if(input.hasNext()) {
@@ -85,16 +86,19 @@ public class Console {
 			    	System.out.println("You must insert a number!");
 			    }
 			}
-			if(answer < 1 || answer >3) {
+			if(answer < 1 || answer >4) {
 				answer = 0;
 			}
 		if(answer == 0) {
-			System.out.println("You must insert one of the numbers of the options! (1-3)");
+			System.out.println("You must insert one of the numbers of the options! (1-4)");
 		}
 		}while(answer == 0);
 		return answer;
 	}
 	public void presentScore(String userName, int userScore, String botName, int botScore) {
 		System.out.println(userName+":"+userScore+", "+botName+":"+botScore);
+	}
+	public void presentStatistics(int wins, int losses) {
+		System.out.println("Wins:"+wins+", Losses:"+losses);
 	}
 }
