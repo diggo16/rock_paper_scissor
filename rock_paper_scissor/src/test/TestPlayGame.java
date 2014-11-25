@@ -45,14 +45,7 @@ public class TestPlayGame {
 	/*
 	 * test the function newGame
 	 */
-	@Test
-	public void testNewGameAndWinner() {
-		pg.newGame();
-		boolean succeed = pg.showWinner();
-		if(succeed == false) {
-			fail();
-		}		
-	}
+	
 	@Test
 	public void testConsoleCall() {
 		pg.newGame();
@@ -66,7 +59,7 @@ public class TestPlayGame {
 	public void testMeny() {
 		console = new Console();
 		pg = new PlayGame(user,bot,console);
-		pg.meny();	
+		pg.meny();
 	}
 	/*
 	 * test several games with different best of numbers
@@ -99,20 +92,6 @@ public class TestPlayGame {
 		bot.win();
 		pg.winner();
 		Mockito.verify(console).showWinner("user");
-		
-	}
-	@Test
-	public void testReset() {
-		User mockUser = Mockito.mock(User.class);
-		Bot mockBot = Mockito.mock(Bot.class);
-		mockUser.win();
-		mockBot.win();
-		PlayGame play = new PlayGame(mockUser,mockBot,console);
-		play.newGame();
-		
-		Mockito.verify(mockUser).reset();
-		Mockito.verify(mockBot).reset();
-		
 		
 	}
 }

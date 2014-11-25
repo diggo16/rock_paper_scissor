@@ -62,8 +62,7 @@ public class TestConsole {
 	 * test to present the the option
 	 */
 	@Test
-	public void testPresentProfileOption() {
-		
+	public void testPresentProfileOption() {	
 		User user = new User("user");
 		user.setChoice("rock");
 		

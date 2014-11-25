@@ -94,4 +94,7 @@ public class Console {
 		}while(answer == 0);
 		return answer;
 	}
+	public void presentScore(String userName, int userScore, String botName, int botScore) {
+		System.out.println(userName+":"+userScore+", "+botName+":"+botScore);
+	}
 }

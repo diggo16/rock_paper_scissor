@@ -45,8 +45,10 @@ public class PlayGame {
 	 * creates a new game
 	 */
 	public void newGame() {
+		reset();
 		int bestOf = rules.getBestOf();
 		int maxPoints = (bestOf/2)+1;
+		
 		for(int i = 0; i < bestOf; i++) {
 			getUserOption();
 			bot.setChoice();
@@ -55,12 +57,14 @@ public class PlayGame {
 			}
 			console.presentProfileOption(user.getClass().getSimpleName(), user.getChoice());
 			console.presentProfileOption(bot.getClass().getSimpleName(), bot.getChoice());
-			
+			console.presentScore(user.getName(), user.getScore(), bot.getName(), bot.getScore());
+				
 			if(user.getScore() == maxPoints || bot.getScore() == maxPoints) {
 				break;
 			}
+			winner();
 		}
-		winner();
+			
 	}
 	private boolean countWinner() {
 		int winnerInt = rules.Winner(user.getChoice(), bot.getChoice());
@@ -91,32 +95,16 @@ public class PlayGame {
 			return user.getName();
 		}
 		return bot.getName();
-	}
-	/*
-	 * let the console print the winner or tell that it is a tie
-	 */
-	public boolean showWinner() {
-		if(user.getChoice() != null && bot.getChoice() != null) {
-			int winnerInt = rules.Winner(user.getChoice(), bot.getChoice());
-			if(winnerInt != -1) {
-				String winner = "";
-				if(winnerInt == 1) {
-					winner = user.getClass().getSimpleName();
-				}
-				if(winnerInt == 2) {
-					winner = bot.getClass().getSimpleName();
-				}
-				console.showWinner(winner);
-				return true;
-			}
-		}
-		return false;
-	}
+	}	
 	/*
 	 * ask the console for the user's choice
 	 */
 	private void getUserOption() {
 		String userChoice = console.askForInputOption();
 		user.setChoice(userChoice);
+	}
+	private void reset() {
+		user.reset();
+		bot.reset();
 	}
 }
