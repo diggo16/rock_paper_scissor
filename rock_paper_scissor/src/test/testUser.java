@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.Random;
 
+import model.Statistics;
 import model.User;
 
 import org.junit.After;
@@ -54,5 +55,19 @@ public class testUser {
 		user.win();
 		}
 		assertEquals(wins,user.getScore());
+	}
+	@Test
+	public void testWonAndLostGames() {
+		int wins = 4, losses = 2;
+		for(int i = 0; i < wins; i++) {
+			user.gameResult("win");
+		}
+		for(int i = 0; i < losses; i++) {
+			user.gameResult("lost");
+		}
+		Statistics stats = user.getStatistics();
+		assertEquals(wins, stats.getWins());
+		assertEquals(losses, stats.getLosses());
+		
 	}
 }
