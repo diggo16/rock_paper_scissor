@@ -43,15 +43,21 @@ public class TestInformation {
 	@Test
 	public void testSave() {
 		List<User> users = new ArrayList<User>();
+		//user 1
 		User user1 = new User("Name1");
-		user1.setChoice("rock");
 		for(int i = 0; i < 3; i++) {
 			user1.gameResult("won");
 		}
 		user1.gameResult("lost");
-		
+		//user 2
 		User user2 = new User("Name2");
-		user2.setChoice("paper");
+		for(int i = 0; i < 2; i++) {
+			user2.gameResult("won");
+		}
+		for(int i = 0; i < 4; i++) {
+		user2.gameResult("lost");
+		}
+		
 		users.add(user1);
 		users.add(user2);
 		if(info.save(users) == false) {
@@ -69,11 +75,18 @@ public class TestInformation {
 			System.out.println("fail");
 			fail();
 		}
-		User user = info.getUser("Name1");
-		assertEquals("Name1",user.getName());
-		Statistics userStats = user.getStatistics();
-		assertEquals(3,userStats.getWins());
-		assertEquals(1,userStats.getLosses());
+		//user 1
+		User user1 = info.getUser("Name1");
+		assertEquals("Name1",user1.getName());
+		Statistics userStats1 = user1.getStatistics();
+		assertEquals(3,userStats1.getWins());
+		assertEquals(1,userStats1.getLosses());
+		//user 2
+		User user2 = info.getUser("Name2");
+		assertEquals("Name2",user2.getName());
+		Statistics userStats2 = user2.getStatistics();
+		assertEquals(2,userStats2.getWins());
+		assertEquals(4,userStats2.getLosses());
 	}
 
 }

@@ -41,7 +41,15 @@ public class Information {
 		
 		while(scanFile.hasNext()) {
 			User temp = new User(scanFile.next());
-			temp.setChoice(scanFile.next());
+			int wins = scanFile.nextInt();
+			for(int i = 0; i < wins; i++) {
+				temp.gameResult("won");
+			}
+			int losses = scanFile.nextInt();
+			for(int i = 0; i < losses; i++) {
+				temp.gameResult("lost");
+			}
+		
 			users.add(temp);
 		}
 		scanFile.close();
@@ -59,7 +67,8 @@ public class Information {
 			Iterator<User> iter = users.iterator();
 			while(iter.hasNext()) {
 				User user = iter.next();
-				pw.println(user.name+" "+user.choice);
+				Statistics stats = user.getStatistics();
+				pw.println(user.name+" "+stats.getWins()+" "+stats.getLosses());
 			}
 			pw.close();
 			return true;

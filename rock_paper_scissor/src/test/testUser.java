@@ -58,9 +58,9 @@ public class testUser {
 	}
 	@Test
 	public void testWonAndLostGames() {
-		int wins = 4, losses = 2;
+		int wins = random.nextInt(50), losses = random.nextInt(50);
 		for(int i = 0; i < wins; i++) {
-			user.gameResult("win");
+			user.gameResult("won");
 		}
 		for(int i = 0; i < losses; i++) {
 			user.gameResult("lost");

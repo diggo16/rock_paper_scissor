@@ -33,5 +33,4 @@ public class User extends Profile {
 	public int getScore() {
 		return score;
 	}
-
 }
