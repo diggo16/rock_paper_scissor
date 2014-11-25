@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Information;
+import model.Statistics;
 import model.User;
 
 import org.junit.After;
@@ -44,6 +45,11 @@ public class TestInformation {
 		List<User> users = new ArrayList<User>();
 		User user1 = new User("Name1");
 		user1.setChoice("rock");
+		for(int i = 0; i < 3; i++) {
+			user1.gameResult("won");
+		}
+		user1.gameResult("lost");
+		
 		User user2 = new User("Name2");
 		user2.setChoice("paper");
 		users.add(user1);
@@ -64,7 +70,10 @@ public class TestInformation {
 			fail();
 		}
 		User user = info.getUser("Name1");
-		assertEquals("rock",user.getChoice());
+		assertEquals("Name1",user.getName());
+		Statistics userStats = user.getStatistics();
+		assertEquals(3,userStats.getWins());
+		assertEquals(1,userStats.getLosses());
 	}
 
 }
