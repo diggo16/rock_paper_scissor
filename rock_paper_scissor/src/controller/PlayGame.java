@@ -29,10 +29,6 @@ public class PlayGame {
 		do {
 			menyChoice = console.meny();
 			
-			if(menyChoice == 0) {
-				break;
-			}
-		
 			if(menyChoice == 1) {
 				newGame();
 			}
@@ -66,7 +62,10 @@ public class PlayGame {
 		int maxPoints = (bestOf/2)+1;
 		
 		for(int i = 0; i < bestOf; i++) {
-			getUserOption();
+			boolean validOption = false;
+			do {
+			validOption = getUserOption();
+			}while(validOption == false);
 			bot.setChoice();
 			if(countWinner() != true) {
 				i--;
@@ -113,9 +112,6 @@ public class PlayGame {
 	private String winnerName() {
 		int userScore = user.getScore();
 		int botScore = bot.getScore();
-		if(userScore == botScore) {
-			return null;
-		}
 		if(userScore > botScore) {
 			return user.getName();
 		}
@@ -124,9 +120,13 @@ public class PlayGame {
 	/*
 	 * ask the console for the user's choice
 	 */
-	private void getUserOption() {
+	private boolean getUserOption() {
 		String userChoice = console.askForInputOption();
 		user.setChoice(userChoice);
+		if(user.getChoice().equals(null)) {
+			return false;
+		}
+		return true;
 	}
 	private void reset() {
 		user.reset();
@@ -135,12 +135,12 @@ public class PlayGame {
 	private void load() {
 		try {
 			info.load();
-			user = info.getFirstUser();
+			user = info.getUser();
 		} catch (FileNotFoundException e) {
 			console.fileNotFound();
 		}
 	}
 	private void save() {
-		info.saveUser(user);
+		info.save(user);
 	}
 }

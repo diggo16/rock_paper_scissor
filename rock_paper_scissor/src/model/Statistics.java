@@ -18,12 +18,6 @@ public class Statistics {
 	public void won() {
 		wins++;
 	}
-	public void setWins(int score) {
-		wins = score;
-	}
-	public void setLosses(int score) {
-		losses = score;
-	}
 	public void lost() {
 		losses++;
 	}

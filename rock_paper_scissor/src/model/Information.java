@@ -3,39 +3,26 @@ package model;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Scanner;
 
 public class Information {
 	private File file;
-	private List<User> users;
+	private User user;
 	/*
 	 * constructor that creates a file and an empty list
 	 */
 	public Information(String string) {
 		file = new File(string);
-		users = new ArrayList<User>();
+		user = new User("user");
 	}
 	/*
-	 * get a user from the list users
+	 * get a user
 	 */
-	public User getUser(String string) {
-		Iterator<User> iter = users.iterator();
-		while(iter.hasNext()) {
-			User user = iter.next();
-			if(user.name.equals(string)) {
-				return user;
-			}
-		}
-		return null;
-	}
-	public User getFirstUser() {
-		return users.get(0);
+	public User getUser() {
+		return user;
 	}
 	public void addUser(User newUser) {
-		users.add(newUser);
+		user = newUser;
 	}
 	/*
 	 * load the users from a text document
@@ -55,7 +42,7 @@ public class Information {
 				temp.gameResult("lost");
 			}
 		
-			users.add(temp);
+			user = temp;
 		}
 		scanFile.close();
 		} catch(FileNotFoundException e) {
@@ -63,34 +50,19 @@ public class Information {
 		}
 	}
 	/*
-	 * save the users on a text document
+	 * save user on the text file
 	 */
-	public boolean save(List<User> list) {
-		users = list;
+	public boolean save(User user) {
 		try {
 			PrintWriter pw = new PrintWriter(file);
-			Iterator<User> iter = users.iterator();
-			while(iter.hasNext()) {
-				User user = iter.next();
-				Statistics stats = user.getStatistics();
-				pw.println(user.name+" "+stats.getWins()+" "+stats.getLosses());
-			}
+			Statistics stats = user.getStatistics();
+			pw.println(user.name+" "+stats.getWins()+" "+stats.getLosses());
 			pw.close();
 			return true;
 		} catch (FileNotFoundException e) {
 			System.out.println("Error: File is not initialized!");
 		}
 		return false;
-	}
-	public void saveUser(User user) {
-		try {
-			PrintWriter pw = new PrintWriter(file);
-			Statistics stats = user.getStatistics();
-			pw.println(user.name+" "+stats.getWins()+" "+stats.getLosses());
-			pw.close();
-		} catch (FileNotFoundException e) {
-			System.out.println("Error: File is not initialized!");
-		}
 	}
 
 }

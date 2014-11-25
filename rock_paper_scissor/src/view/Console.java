@@ -30,12 +30,7 @@ public class Console {
 	 * show the winner
 	 */
 	public void showWinner(String winner) {
-		if(winner != null) {
 		System.out.println(winner+" won!");
-		}
-		else {
-			System.out.println("Tie!");
-		}
 	}
 	/*
 	 * ask for amounts of rounds

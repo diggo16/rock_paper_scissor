@@ -24,7 +24,7 @@ public class Profile {
 		if(result.equals("won")) {
 			stats.won();
 		}
-		else if(result.equals("lost")) {
+		if(result.equals("lost")) {
 			stats.lost();
 		}
 	}

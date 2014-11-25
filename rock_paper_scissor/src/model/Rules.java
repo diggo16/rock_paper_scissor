@@ -11,10 +11,6 @@ public class Rules {
 	 * return 0 if it is a tie, 1 if "option1" won or 2 if "option2" won.
 	 */
 	public int Winner(String option1, String option2) {
-		if(option1.equals(option2)) {
-			return 0;
-		}
-		else {
 			if(option1.equals("rock")) {
 				if(option2.equals("paper")) {
 					return 2;
@@ -39,8 +35,7 @@ public class Rules {
 					return 1;
 				}
 			}
-		}
-		return -1;
+		return 0;
 	}
 	public void setBestOf(int nr) throws IllegalArgumentException{
 		bestOf = nr;
