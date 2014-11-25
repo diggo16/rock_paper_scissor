@@ -1,7 +1,10 @@
 package controller;
 
+import java.io.FileNotFoundException;
+
 import view.Console;
 import model.Bot;
+import model.Information;
 import model.Rules;
 import model.Statistics;
 import model.User;
@@ -12,12 +15,14 @@ public class PlayGame {
 	private Bot bot;
 	private Console console;
 	private Rules rules;
+	private Information info;
 	
 	public PlayGame(User user, Bot bot, Console console) {
 		this.user = user;
 		this.console = console;
 		this.bot = bot;
 		rules = new Rules();
+		info = new Information("info.txt");
 	}
 	public void meny() {
 		int menyChoice;
@@ -38,7 +43,13 @@ public class PlayGame {
 				Statistics stats = user.getStatistics();
 				console.presentStatistics(stats.getWins(), stats.getLosses());
 			}
-		}while(menyChoice != 4);
+			if(menyChoice == 4) {
+				load();
+			}
+			if(menyChoice == 5) {
+				save();
+			}
+		}while(menyChoice != 6);
 		console.closeScanner();
 		
 	}
@@ -120,5 +131,16 @@ public class PlayGame {
 	private void reset() {
 		user.reset();
 		bot.reset();
+	}
+	private void load() {
+		try {
+			info.load();
+			user = info.getFirstUser();
+		} catch (FileNotFoundException e) {
+			console.fileNotFound();
+		}
+	}
+	private void save() {
+		info.saveUser(user);
 	}
 }

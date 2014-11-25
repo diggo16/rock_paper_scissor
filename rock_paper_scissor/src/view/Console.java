@@ -41,7 +41,7 @@ public class Console {
 	 * ask for amounts of rounds
 	 */
 	public int askForRounds() {
-		System.out.println("How many \"best of\" rounds do you want to play? ");
+		System.out.println("How many \"best of\" rounds do you want to play? (Must be an odd number)");
 		int answer = 0;
 		do {
 		if(input.hasNext()) {
@@ -49,14 +49,14 @@ public class Console {
 			try { 
 			        answer = Integer.parseInt(temp); 
 			    } catch(NumberFormatException e) {
-			    	System.out.println("You must insert a number!");
+			    	System.out.println("You must insert an odd number!");
 			    }
 			}
-			if(answer <= 0) {
+			if(answer <= 0 || answer % 2 == 0) {
 				answer = 0;
 			}
 		if(answer == 0) {
-			System.out.println("You must insert a number higher than 0!");
+			System.out.println("You must insert an odd number higher than 0!");
 		}
 		}while(answer == 0);
 		return answer;
@@ -75,7 +75,9 @@ public class Console {
 						 + "1. New game\n"
 						 + "2. Settings\n"
 						 + "3. Statistics\n"
-						 + "4. Quit");
+						 + "4. Load\n"
+						 + "5. Save\n"
+						 + "6. Quit");
 		int answer = 0;
 		do {
 		if(input.hasNext()) {
@@ -86,11 +88,11 @@ public class Console {
 			    	System.out.println("You must insert a number!");
 			    }
 			}
-			if(answer < 1 || answer >4) {
+			if(answer < 1 || answer >6) {
 				answer = 0;
 			}
 		if(answer == 0) {
-			System.out.println("You must insert one of the numbers of the options! (1-4)");
+			System.out.println("You must insert one of the numbers of the options! (1-6)");
 		}
 		}while(answer == 0);
 		return answer;
@@ -100,5 +102,8 @@ public class Console {
 	}
 	public void presentStatistics(int wins, int losses) {
 		System.out.println("Wins:"+wins+", Losses:"+losses);
+	}
+	public void fileNotFound() {
+		System.out.println("File not found!");
 	}
 }

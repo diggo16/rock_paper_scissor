@@ -11,7 +11,6 @@ import java.util.Scanner;
 public class Information {
 	private File file;
 	private List<User> users;
-
 	/*
 	 * constructor that creates a file and an empty list
 	 */
@@ -31,6 +30,12 @@ public class Information {
 			}
 		}
 		return null;
+	}
+	public User getFirstUser() {
+		return users.get(0);
+	}
+	public void addUser(User newUser) {
+		users.add(newUser);
 	}
 	/*
 	 * load the users from a text document
@@ -76,6 +81,16 @@ public class Information {
 			System.out.println("Error: File is not initialized!");
 		}
 		return false;
+	}
+	public void saveUser(User user) {
+		try {
+			PrintWriter pw = new PrintWriter(file);
+			Statistics stats = user.getStatistics();
+			pw.println(user.name+" "+stats.getWins()+" "+stats.getLosses());
+			pw.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("Error: File is not initialized!");
+		}
 	}
 
 }
