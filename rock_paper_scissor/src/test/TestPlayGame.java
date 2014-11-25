@@ -101,4 +101,18 @@ public class TestPlayGame {
 		Mockito.verify(console).showWinner("user");
 		
 	}
+	@Test
+	public void testReset() {
+		User mockUser = Mockito.mock(User.class);
+		Bot mockBot = Mockito.mock(Bot.class);
+		mockUser.win();
+		mockBot.win();
+		PlayGame play = new PlayGame(mockUser,mockBot,console);
+		play.newGame();
+		
+		Mockito.verify(mockUser).reset();
+		Mockito.verify(mockBot).reset();
+		
+		
+	}
 }
